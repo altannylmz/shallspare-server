@@ -1,5 +1,8 @@
 <template>
-  <p>Dashboard</p>
+  <div>
+    <p>Dashboard</p>
+    <font-awesome-icon icon="phone" />
+  </div>
 </template>
 
 <script>
