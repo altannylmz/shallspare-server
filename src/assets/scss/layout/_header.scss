@@ -1,0 +1,19 @@
+.header{
+  height: 40px;
+  background-color: #ffffff;
+  -moz-box-shadow:0 5px 5px rgba(182, 182, 182, 0.2);
+  -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.2);
+  box-shadow: 0 5px 5px rgba(182, 182, 182, 0.2);
+}
+
+.logo{
+  height: 40px;
+}
+
+i{
+  cursor: pointer;
+}
+
+.version{
+  font-size: 13px;
+}
