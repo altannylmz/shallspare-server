@@ -1,7 +1,14 @@
 .sidebar{
   width: 120px;
-  margin-top: 40px;
+  padding-top: 40px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  a:hover{
+    color: #8938dc !important
+  }
+}
+
+.sidebar-active{
+  color: #8938dc !important;
 }
 
 .nav-item{
@@ -26,4 +33,5 @@
 .nav-item:last-child{
   border: none!important;
 }
+
 

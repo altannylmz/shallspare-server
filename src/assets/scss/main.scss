@@ -23,3 +23,18 @@
 
 //Icons
 @import "../icons/iconsmind/iconsmind.css";
+
+
+body{
+  background-color: #F2F3F9;
+}
+.content{
+  overflow: auto;
+  margin-top: 45px;
+  margin-left: 120px;
+  padding: 10px;
+}
+
+.list-group{
+  border-radius: 0;
+}

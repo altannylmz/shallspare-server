@@ -1,4 +1,25 @@
-.content{
-  margin-top: 35px;
-  margin-left: 120px;
+.statistic{
+  margin-bottom: 15px;
+  color: #5e2b8f !important;
+  i{
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    display: block;
+    margin: 0 auto 6px;
+  }
+
+  .card{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    p{
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+
+  .bar-card{
+    padding: 20px;
+  }
 }
