@@ -1,5 +1,7 @@
 # shallspare-server
 
+It consists of two parts: Client and Server app. The server has the opportunity to backup any file or folder on the client to more than one location and runs on Windows, MacOS, Linux.
+https://shallspare.com/
 ## Project setup
 ```
 npm install
