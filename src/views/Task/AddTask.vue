@@ -95,8 +95,8 @@ export default {
 		changeTimingType($event) {
 			this.timingType = $event.target.value;
 		},
-		addTask($e) {
-			console.log($e);
+		addTask() {
+			this.$notify.success('Task Added.');
 		},
 	},
 };

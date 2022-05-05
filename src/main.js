@@ -19,5 +19,7 @@ import {faArrowDown, faPen, faPlay, faStop, faCircleMinus} from '@fortawesome/fr
 library.add(faArrowDown, faPen, faPlay, faStop, faCircleMinus);
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 
+import notify from './plugins/notify';
+app.use(notify);
 app.use(router);
 app.component('font-awesome-icon', FontAwesomeIcon).mount('#app');
