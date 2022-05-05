@@ -22,4 +22,20 @@
   .bar-card{
     padding: 20px;
   }
+
+  .refresh-btn{
+    background-color: #5e2b8f;
+    color: white;
+    padding: 2px 5px 2px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .active-task{
+    .task-name{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
 }
