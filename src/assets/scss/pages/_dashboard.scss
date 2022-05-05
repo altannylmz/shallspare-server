@@ -1,13 +1,16 @@
 .dashboard-page{
   .statistic{
     margin-bottom: 15px;
-    color: $baseColor !important;
     i{
       font-size: 32px;
       height: 32px;
       width: 32px;
       display: block;
       margin: 0 auto 6px;
+    }
+
+    .text-purple{
+      color: $baseColor !important;
     }
 
     .card{
@@ -21,12 +24,17 @@
     }
 
     .bar-card{
-      padding: 20px;
+      padding: 5px;
+    }
+
+    .info-card{
+      padding: 0 10px 10px 10px;
+      font-size: 13px!important;
+      height: 150px!important;
     }
 
     .refresh-btn{
-      background-color: $baseColor;
-      color: white;
+      color: $lightGreen;
       padding: 2px 5px 2px 5px;
       border-radius: 4px;
       font-size: 12px;
@@ -42,6 +50,7 @@
 
     .progress-bar{
       background-color: $baseColor;
+      font-size: 10px;
     }
   }
 }

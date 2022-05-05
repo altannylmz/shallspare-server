@@ -39,7 +39,7 @@ export default {
 		},
 		height: {
 			type: Number,
-			default: 200,
+			default: 150,
 		},
 		cssClasses: {
 			default: '',
@@ -78,6 +78,7 @@ export default {
 			},
 			chartOptions: {
 				responsive: false,
+				cutout: 40,
 			},
 			statisticData: '',
 		};
@@ -93,7 +94,7 @@ export default {
 			];
 			this.statisticData = this.data.ok + '/' + this.data.warning + '/' + this.data.err;
 		} else if (this.type === 'disk') {
-			this.chartData.labels = ['Full', 'Free'];
+			this.chartData.labels = ['Full', 'Free', ''];
 			this.chartData.datasets = [
 				{
 					backgroundColor: ['#5E2B8F', '#CED7DA'],

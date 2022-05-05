@@ -1,15 +1,13 @@
 .header{
-  height: 40px;
+  height: 35px;
   background-color: #ffffff;
   -moz-box-shadow:0 5px 5px rgba(182, 182, 182, 0.2);
   -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.2);
   box-shadow: 0 5px 5px rgba(182, 182, 182, 0.2);
 }
 
-
-
 .logo{
-  height: 40px;
+  height: 35px;
 }
 
 i{
@@ -17,5 +15,8 @@ i{
 }
 
 .version{
-  font-size: 13px;
+  font-size: 8px;
+  font-family: Roboto;
+  font-weight: 500;
+  margin-left: 3px!important;
 }

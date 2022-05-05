@@ -22,4 +22,15 @@
   a{
     cursor: pointer!important;
   }
+
+  .dropdown-menu{
+    font-size: 13px;
+    outline: none !important;
+  }
+  .btn-check:focus + .btn, .btn:focus {
+    outline: none !important;
+    outline: none !important;
+    outline-offset: -2px;
+    box-shadow: none!important;
+  }
 }

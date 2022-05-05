@@ -9,15 +9,19 @@ const router = createRouter({
 	routes,
 });
 
-const app = createApp(App);
+import BootstrapVue3 from 'bootstrap-vue-3';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
+// Import Bootstrap and BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+const app = createApp(App);
 import '../src/assets/scss/main.scss';
 
 import notify from './plugins/notify';
 import FontAwesomeIcon from './plugins/font-awesome';
 
+// Make BootstrapVue available throughout your project
+app.use(BootstrapVue3);
 app.use(notify);
 app.use(router);
 app.component('font-awesome-icon', FontAwesomeIcon).mount('#app');

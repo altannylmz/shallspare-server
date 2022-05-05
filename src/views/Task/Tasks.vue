@@ -1,6 +1,6 @@
 <template>
   <div class="tasks-page content position-absolute start-0 end-0 px-4">
-    <div class="flex flex-column">
+    <div class="flex flex-column position-relative">
       <div class="row justify-content-between">
         <div class="col">
           Tasks
@@ -14,11 +14,23 @@
           <div class="col-sm-1 my-auto">1</div>
           <div class="col-sm-4 my-auto text-start">CTF_FILE</div>
           <div class="col-sm-4 my-auto text-start">CLIENT TO DISK</div>
-          <div class="col-sm-3 my-auto">
-            <a><font-awesome-icon class="m-1" icon="arrow-down" /></a>
-            <a><font-awesome-icon class="m-1" icon="pen" /></a>
-            <a><font-awesome-icon class="m-1" icon="play" /></a>
-            <a><font-awesome-icon class="m-1" icon="circle-minus" /></a>
+          <div class="col-sm-3 my-auto text-end">
+            <div class="dropdown">
+              <button class="btn dropdown" data-bs-toggle="dropdown"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a><font-awesome-icon class="m-1" icon="ellipsis" /></a>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"><font-awesome-icon class="my-auto mx-2" icon="pen"/>
+                  <p class="d-inline text-end">Edit</p>
+                </a>
+                <a class="dropdown-item"><font-awesome-icon class="my-auto mx-2" icon="play"/>
+                  <p class="d-inline text-end">Play</p>
+                </a>
+                <a class="dropdown-item"><font-awesome-icon class="my-auto mx-2" icon="trash"/>
+                  <p class="d-inline text-end">Delete</p>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

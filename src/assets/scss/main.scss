@@ -39,6 +39,12 @@ body{
   border-radius: 0;
 }
 
+.title{
+  font-family: Roboto;
+  width: 500;
+  font-size: 13px;
+}
+
 input{
   height: 33px;
   font-size: 14px!important;
@@ -84,4 +90,8 @@ select:focus{
 textarea:focus{
   border: 1px solid #e5e4e4;
   border-color: $baseColor;
+}
+
+hr{
+  color: #9d9d9d;
 }
