@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard content position-absolute start-0 end-0 px-4">
+  <div class="dashboard-page content position-absolute start-0 end-0 px-4">
     <div class="statistic row">
       <div class="col-sm-3 text-center ">
         <div class="card shadow shadow-sm">

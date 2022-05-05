@@ -15,8 +15,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import '../src/assets/scss/main.scss';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faPhone} from '@fortawesome/free-solid-svg-icons';
-library.add(faPhone);
+import {faArrowDown, faPen, faPlay, faStop, faCircleMinus} from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowDown, faPen, faPlay, faStop, faCircleMinus);
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 
 app.use(router);
