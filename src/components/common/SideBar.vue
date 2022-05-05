@@ -7,7 +7,7 @@
         <p class="p-0 m-0">Dashboard</p>
       </router-link>
       <router-link to="/tasks" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Tasks'?'sidebar-active':''">
+      :class="activeRoute==='Task' || activeRoute==='AddTask' ?'sidebar-active':''">
         <i class="i-Library"></i>
         <p class="p-0 m-0">Tasks</p>
       </router-link>

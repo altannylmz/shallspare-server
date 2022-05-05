@@ -6,7 +6,7 @@
           Tasks
         </div>
         <div class="col text-end">
-          <button class="add-btn">Add Task</button>
+          <router-link class="add-btn" to="/add-task" tag="button">Add Task</router-link>
         </div>
       </div>
       <div class="overflow-auto">

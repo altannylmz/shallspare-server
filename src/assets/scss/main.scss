@@ -19,8 +19,8 @@
 @import "pages/remote-machines";
 @import "pages/settings";
 @import "pages/support";
-@import "pages/tasks";
-
+@import "pages/Task/tasks";
+@import "pages/Task/add-task";
 //Icons
 @import "../icons/iconsmind/iconsmind.css";
 
@@ -37,4 +37,51 @@ body{
 
 .list-group{
   border-radius: 0;
+}
+
+input{
+  height: 33px;
+  font-size: 14px!important;
+  background-color: #f7f7f7 !important;
+  border-radius: 3px!important;
+}
+
+select{
+  height: 33px;
+  font-size: 14px!important;
+  background-color: #f7f7f7 !important;
+  border-radius: 3px!important;
+}
+
+textarea{
+  font-size: 14px!important;
+  background-color: #f7f7f7 !important;
+  border-radius: 3px!important;
+}
+
+option{
+  font-size: 14px!important;
+  padding: 0;
+  margin: 0;
+  background-color: #f7f7f7 !important;
+  border-radius: 3px!important;
+}
+
+form{
+  border-radius: 5px;
+}
+
+input:focus{
+  border: 1px solid #e5e4e4;
+  border-color: $baseColor;
+}
+
+select:focus{
+  border: 1px solid #e5e4e4;
+  border-color: $baseColor;
+}
+
+textarea:focus{
+  border: 1px solid #e5e4e4;
+  border-color: $baseColor;
 }
