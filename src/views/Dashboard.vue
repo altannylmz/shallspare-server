@@ -42,6 +42,18 @@
         </div>
       </div>
     </div>
+    <div class="statistic row">
+      <div class="col-sm-6">
+        <div class="bar-card bg-white shadow shadow-sm">
+          <BarChart type="task" :data="taskStatistic"></BarChart>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="bar-card bg-white shadow shadow-sm">
+          <BarChart type="disk" :data="diskStatistic"></BarChart>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

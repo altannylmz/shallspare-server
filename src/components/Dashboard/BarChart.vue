@@ -7,6 +7,7 @@
         :plugins="plugins"
         :css-classes="cssClasses"
         :styles="styles"
+        :height="height"
     />
     <p class="mt-1 mb-0">{{statisticData}}</p>
   </div>
@@ -31,13 +32,25 @@ export default {
 			type: String,
 			default: 'doughnut-chart',
 		},
+		width: {
+			type: Number,
+			default: 200,
+		},
+		height: {
+			type: Number,
+			default: 200,
+		},
 		cssClasses: {
 			default: '',
 			type: String,
 		},
 		styles: {
 			type: Object,
-			default() {},
+			default() {
+				return {
+					display: 'inline-block',
+				};
+			},
 		},
 		plugins: {
 			type: Object,
@@ -63,7 +76,7 @@ export default {
 				],
 			},
 			chartOptions: {
-				responsive: true,
+				responsive: false,
 			},
 			statisticData: '',
 		};
