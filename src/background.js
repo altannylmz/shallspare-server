@@ -1,8 +1,9 @@
 'use strict';
 
-import {app, protocol, BrowserWindow} from 'electron';
+import {app, protocol, BrowserWindow, ipcMain, Tray, Menu} from 'electron';
 import {createProtocol} from 'vue-cli-plugin-electron-builder/lib';
 import installExtension, {VUEJS3_DEVTOOLS} from 'electron-devtools-installer';
+import path from 'path';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // Scheme must be registered before the app is ready
@@ -15,12 +16,16 @@ async function createWindow() {
 	const win = new BrowserWindow({
 		width: 800,
 		height: 600,
+		minWidth: 800,
+		minHeight: 600,
+		frame: false,
 		webPreferences: {
 
 			// Use pluginOptions.nodeIntegration, leave this alone
 			// See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
 			nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
 			contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
+			enableRemoteModule: false,
 		},
 	});
 
@@ -35,6 +40,45 @@ async function createWindow() {
 		// Load the index.html when not in development
 		win.loadURL('app://./index.html');
 	}
+
+	const trayMenuTemplate = [
+		{
+			label: 'Exit',
+			click() {
+				app.quit();
+			},
+		},
+	];
+
+	app.whenReady().then(() => {
+		const tray = new Tray(path.join(app.getAppPath(),
+			'dist-assets/images',
+			'trayicon.png'));
+		const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
+		tray.setToolTip('ShallSpare');
+		tray.setContextMenu(contextMenu);
+		tray.on('click', () => {
+			win.isVisible() ? win.hide() : win.show();
+		});
+	});
+
+	ipcMain.on('minimize', () => {
+		win.minimize();
+	});
+
+	ipcMain.on('hide', () => {
+		win.hide();
+	});
+
+	ipcMain.on('full', () => {
+		if (!win.isMaximized()) {
+			win.maximize();
+		}
+	});
+
+	ipcMain.on('isHide', event => {
+		event.returnValue = !(!win.isVisible() || win.isMinimized());
+	});
 }
 
 // Quit when all windows are closed.
@@ -68,6 +112,19 @@ app.on('ready', async () => {
 	}
 
 	createWindow();
+});
+
+ipcMain.on('userData', event => {
+	event.returnValue = app.getPath('userData');
+});
+
+ipcMain.on('getAppVersion', event => {
+	event.returnValue = app.getVersion();
+});
+
+ipcMain.on('restartApp', () => {
+	app.relaunch({args: process.argv.slice(1).concat(['--relaunch'])});
+	app.exit(0);
 });
 
 // Exit cleanly on request from parent process in development mode.

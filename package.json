@@ -1,7 +1,15 @@
 {
   "name": "shallspare-server",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "private": true,
+  "description": "ShallSpare Server Side",
+  "homepage": "shallspare.com",
+  "keywords": [
+    "ShallSpare",
+    "Backup"
+  ],
+  "author": "ShallSpare",
+  "license": "ISC",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -35,6 +43,7 @@
     "@vue/cli-service": "~5.0.0",
     "electron": "^13.6.9",
     "electron-devtools-installer": "^3.1.0",
+    "electron-packager": "^15.5.1",
     "eslint": "^8.14.0",
     "eslint-config-xo": "^0.40.0",
     "eslint-plugin-vue": "^8.7.1",
