@@ -1,6 +1,6 @@
 <template>
-  <div class="sidebar d-flex flex-column justify-content-start vh-100 position-fixed ">
-    <ul class="list-group overflow-auto">
+  <div class="sidebar d-flex flex-column justify-content-start vh-100 position-fixed">
+    <ul class="list-group custom-overflow">
       <router-link to="/" tag="li" class="list-group-item nav-item text-center"
       :class="activeRoute==='Dashboard'?'sidebar-active':''">
         <i class="i-Bar-Chart"></i>

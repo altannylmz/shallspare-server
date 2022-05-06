@@ -1,3 +1,4 @@
+
 import Notiflix from 'notiflix';
 export default {
 	install(app) {

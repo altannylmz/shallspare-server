@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-page content position-absolute start-0 end-0 px-4">
     <p class="title text-purple">Dashboard</p>
+    <hr>
     <div class="statistic row">
       <div class="col-sm-3 text-center ">
         <div class="card shadow shadow-sm">
@@ -45,42 +46,46 @@
     </div>
     <div class="statistic row">
       <div class="col-sm-6">
-        <div class="info-card bg-white shadow shadow-sm overflow-auto">
+        <div class="dsh-card bg-white shadow shadow-sm overflow-auto">
           <div class="sticky-top bg-white">
             <p class="mb-0 pt-2 text-purple title">Active Clients</p>
             <hr class="m-0 mb-1">
           </div>
-          <div v-for="i in [1,2,3,4,5,6,7,8,9]" :key="i" class="row m-1">
-            <div class="col-sm-2">
-              1
-            </div>
-            <div class="col-sm-6">
-              ALTAN-PC
-            </div>
-            <div class="col-sm-4 text-center">
-               <button class="refresh-btn">
-                 <font-awesome-icon icon="arrows-rotate"/>
-               </button>
+          <div class="info-card custom-overflow">
+            <div v-for="i in [1,2,3,4,5,6,7,8,9]" :key="i" class="row m-1">
+              <div class="col-sm-2">
+                1
+              </div>
+              <div class="col-sm-6">
+                ALTAN-PC
+              </div>
+              <div class="col-sm-4 text-center">
+                <button class="refresh-btn">
+                  <font-awesome-icon icon="arrows-rotate"/>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="info-card bg-white shadow shadow-sm overflow-auto">
+        <div class="dsh-card bg-white shadow shadow-sm overflow-auto">
           <div class="sticky-top bg-white">
             <p class="mb-0 pt-2 text-purple title">Active Tasks</p>
             <hr class="m-0 mb-1">
           </div>
-          <div v-for="i in [1,2,3,4,5,6,7,8,9]" :key="i" class="row m-1 active-task">
-            <div class="col-sm-2">
-              1
-            </div>
-            <div class="col-sm-4 task-name">
-              Mysql Backup
-            </div>
-            <div class="col-sm-6 my-auto">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          <div class="info-card custom-overflow">
+            <div v-for="i in [1,2,3,4,5,6,7,8,9]" :key="i" class="row m-1 active-task">
+              <div class="col-sm-2">
+                1
+              </div>
+              <div class="col-sm-4 task-name">
+                Mysql Backup
+              </div>
+              <div class="col-sm-6 my-auto">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
               </div>
             </div>
           </div>

@@ -5,34 +5,35 @@
         <div class="col">
           <p class="title">Tasks</p>
         </div>
-        <div class="col text-end">
+        <div class="col add text-end">
+          <font-awesome-icon class="add-icon" icon="plus"/>
           <router-link class="add-btn" to="/new-task" tag="button">New Task</router-link>
         </div>
       </div>
-      <div class="overflow-auto">
-        <div v-for="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" :key="i" class="data-row row text-center shadow-sm">
-          <div class="col-sm-1 my-auto">1</div>
-          <div class="col-sm-4 my-auto text-start">CTF_FILE</div>
-          <div class="col-sm-4 my-auto text-start">CLIENT TO DISK</div>
-          <div class="col-sm-3 my-auto text-end">
-            <div class="dropdown">
-              <button class="btn dropdown" data-bs-toggle="dropdown"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <a><font-awesome-icon class="m-1" icon="ellipsis" /></a>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item">
-                  <font-awesome-icon class="my-auto mx-2" icon="pen"/>
-                  <p class="d-inline text-end">Edit</p>
-                </a>
-                <a @click="pauseOrStartTask(i)" class="dropdown-item">
-                  <font-awesome-icon class="my-auto mx-2" icon="play"/>
-                  <p class="d-inline text-end">Play</p>
-                </a>
-                <a @click="deleteTask(i)" class="dropdown-item">
-                  <font-awesome-icon class="my-auto mx-2" icon="trash"/>
-                  <p class="d-inline text-end">Delete</p>
-                </a>
-              </div>
+      <hr>
+      <div v-for="i in [1,2,3,4,5,6,7,8,9,10]" :key="i"
+           class="data-row row text-center shadow-sm text-black">
+        <div class="col-sm-1 my-auto">1</div>
+        <div class="col-sm-4 my-auto text-start">CTF_FILE</div>
+        <div class="col-sm-4 my-auto text-start">CLIENT TO DISK</div>
+        <div class="col-sm-3 my-auto text-end">
+          <div class="dropdown">
+            <button class="btn dropdown" data-bs-toggle="dropdown"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a><font-awesome-icon class="m-1" icon="ellipsis" /></a>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <font-awesome-icon class="my-auto mx-2" icon="pen"/>
+                <p class="d-inline text-end">Edit</p>
+              </a>
+              <a @click="pauseOrStartTask(i)" class="dropdown-item">
+                <font-awesome-icon class="my-auto mx-2" icon="play"/>
+                <p class="d-inline text-end">Play</p>
+              </a>
+              <a @click="deleteTask(i)" class="dropdown-item">
+                <font-awesome-icon class="my-auto mx-2" icon="trash"/>
+                <p class="d-inline text-end">Delete</p>
+              </a>
             </div>
           </div>
         </div>

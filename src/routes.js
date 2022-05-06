@@ -14,8 +14,11 @@ import Databases from '@/views/Database/Databases';
 import EditDatabase from '@/views/Database/EditDatabase';
 import NewDatabase from '@/views/Database/NewDatabase';
 
+import Logs from '@/views/Log/Logs';
+import LiveStream from '@/views/Log/LiveStream';
+
 import Support from '@/views/Support';
-import Logs from '@/views/Logs';
+
 import Settings from '@/views/Settings';
 
 export const routes = [
@@ -35,7 +38,9 @@ export const routes = [
 	{path: '/edit-database/:id', component: EditDatabase, name: 'EditDatabase'},
 	{path: '/new-database', component: NewDatabase, name: 'NewDatabase'},
 
-	{path: '/support', component: Support, name: 'Support'},
 	{path: '/logs', component: Logs, name: 'Logs'},
+	{path: '/live-stream', component: LiveStream, name: 'LiveStream'},
+
+	{path: '/support', component: Support, name: 'Support'},
 	{path: '/settings', component: Settings, name: 'Settings'},
 ];

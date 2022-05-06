@@ -6,9 +6,11 @@
           <p class="title text-purple">Logs</p>
         </div>
         <div class="col text-end">
-          <router-link class="add-btn" to="/new-remote-machine" tag="button">Live Stream</router-link>
+          <font-awesome-icon class="add-icon" icon="stream"/>
+          <router-link class="add-btn" to="/live-stream" tag="button">Live Stream</router-link>
         </div>
       </div>
+      <hr>
     </div>
     <table class="table table-borderless">
       <thead>
@@ -32,13 +34,13 @@
       </tbody>
     </table>
     <div class="container-fluid text-center">
-      <button class="pagination-btn">
+      <button @click="beforePage" class="pagination-btn">
         <font-awesome-icon icon="angle-left"/>
       </button>
-      <button class="page-number"
+      <button @click="showPage" class="page-number"
               v-for="i in Math.ceil(logs.length/5)" :key="i">{{i}}
       </button>
-      <button class="pagination-btn">
+      <button @click="afterPage" class="pagination-btn">
         <font-awesome-icon icon="angle-right"/>
       </button>
     </div>
@@ -50,12 +52,23 @@ export default {
 	name: 'LogsView',
 	data() {
 		return {
-			logs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+			logs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			pagination: [],
 		};
 	},
 	mounted() {
 
+	},
+	methods: {
+		afterPage() {
+
+		},
+		beforePage() {
+
+		},
+		showPage() {
+
+		},
 	},
 };
 </script>

@@ -22,10 +22,12 @@
       padding: 5px;
     }
 
-    .info-card{
+    .dsh-card{
       padding: 0 10px 10px 10px;
       font-size: 13px!important;
-      height: 150px!important;
+      .info-card{
+        height: 150px!important;
+      }
     }
 
     .refresh-btn{
