@@ -31,8 +31,8 @@ export const routes = [
 	{path: '/edit-client/:id', component: EditClient, name: 'EditClient'},
 
 	{path: '/remote-machines', component: RemoteMachines, name: 'RemoteMachines'},
-	{path: '/edit-remote-machine/:id', component: EditRemoteMachine, name: 'EditRemoteMachines'},
-	{path: '/new-remote-machine', component: NewRemoteMachine, name: 'NewRemoteMachines'},
+	{path: '/edit-remote-machine/:id', component: EditRemoteMachine, name: 'EditRemoteMachine'},
+	{path: '/new-remote-machine', component: NewRemoteMachine, name: 'NewRemoteMachine'},
 
 	{path: '/databases', component: Databases, name: 'Databases'},
 	{path: '/edit-database/:id', component: EditDatabase, name: 'EditDatabase'},

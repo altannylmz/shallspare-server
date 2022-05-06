@@ -7,7 +7,7 @@
         </div>
         <div class="col text-end">
           <font-awesome-icon class="add-icon" icon="plus"/>
-          <router-link class="add-btn" to="/new-task" tag="button">New Remote Machine</router-link>
+          <router-link class="add-btn" to="/new-remote-machine" tag="button">New Remote Machine</router-link>
         </div>
       </div>
       <hr>

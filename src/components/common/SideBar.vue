@@ -2,32 +2,32 @@
   <div class="sidebar d-flex flex-column justify-content-start vh-100 position-fixed">
     <ul class="list-group custom-overflow">
       <router-link to="/" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Dashboard'?'sidebar-active':''">
+      :class="activeRoute=='Dashboard'?'sidebar-active':''">
         <i class="i-Bar-Chart"></i>
         <p class="p-0 m-0">Dashboard</p>
       </router-link>
       <router-link to="/tasks" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Task' || activeRoute==='AddTask' ?'sidebar-active':''">
+      :class="activeRoute==='Tasks' || activeRoute==='NewTask' ?'sidebar-active':''">
         <i class="i-Library"></i>
         <p class="p-0 m-0">Tasks</p>
       </router-link>
       <router-link to="/clients" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Clients'?'sidebar-active':''">
+      :class="activeRoute==='Clients' || activeRoute==='EditClient'?'sidebar-active':''">
         <i class="i-Network-Window"></i>
         <p class="p-0 m-0">Clients</p>
       </router-link>
       <router-link to="/remote-machines" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='RemoteMachine'?'sidebar-active':''">
+      :class="activeRoute==='RemoteMachines' || activeRoute==='NewRemoteMachine' || activeRoute==='EditRemoteMachine'?'sidebar-active':''">
         <i class="i-Cloud-Computer"></i>
         <p class="p-0 m-0">Remote Machines</p>
       </router-link>
       <router-link to="/databases" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Database'?'sidebar-active':''">
+      :class="activeRoute==='Databases' || activeRoute==='NewDatabase' || activeRoute==='EditDatabase'?'sidebar-active':''">
         <i class="i-Big-Data"></i>
         <p class="p-0 m-0">Databases</p>
       </router-link>
       <router-link to="/logs" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Logs'?'sidebar-active':''">
+      :class="activeRoute==='Logs' || activeRoute==='LiveStream'?'sidebar-active':''">
         <i class="i-File-Clipboard-File--Text"></i>
         <p class="p-0 m-0">Logs</p>
       </router-link>
@@ -50,6 +50,7 @@ export default {
 	name: 'AppSideBar',
 	computed: {
 		activeRoute() {
+			console.log(this.$route.name);
 			return this.$route.name;
 		},
 	},
