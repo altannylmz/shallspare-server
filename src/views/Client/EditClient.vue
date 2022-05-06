@@ -26,6 +26,7 @@ export default {
 	name: 'EditClient',
 	data() {
 		return {
+			id: this.$route.params.id,
 			client: {
 				id: '',
 				name: '',
@@ -37,7 +38,7 @@ export default {
 	methods: {
 		updateClient() {
 			if (this.client.tag.length) {
-				console.log('test');
+				console.log(this.id);
 			} else {
 				this.$notify.warning('Fill Empty Area');
 			}

@@ -22,7 +22,7 @@
                 <a><font-awesome-icon class="m-1" icon="ellipsis" /></a>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <router-link class="dropdown-item" to="/edit-remote-machine" tag="a">
+                <router-link class="dropdown-item" :to="'/edit-remote-machine/'+i" tag="a">
                   <font-awesome-icon class="my-auto mx-2" icon="pen"/>
                   <p class="d-inline text-end">Edit</p>
                 </router-link>

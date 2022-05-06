@@ -17,12 +17,12 @@
         <p class="p-0 m-0">Clients</p>
       </router-link>
       <router-link to="/remote-machines" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='RemoteMachines'?'sidebar-active':''">
+      :class="activeRoute==='RemoteMachine'?'sidebar-active':''">
         <i class="i-Cloud-Computer"></i>
         <p class="p-0 m-0">Remote Machines</p>
       </router-link>
       <router-link to="/databases" tag="li" class="list-group-item nav-item text-center"
-      :class="activeRoute==='Databases'?'sidebar-active':''">
+      :class="activeRoute==='Database'?'sidebar-active':''">
         <i class="i-Big-Data"></i>
         <p class="p-0 m-0">Databases</p>
       </router-link>

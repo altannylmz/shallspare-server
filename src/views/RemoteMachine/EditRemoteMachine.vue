@@ -41,6 +41,7 @@ export default {
 	name: 'EditRemoteMachine',
 	data() {
 		return {
+			id: this.$route.params.id,
 			remoteMachine: {
 				ftp: {
 					type: '',
@@ -58,7 +59,7 @@ export default {
       || machine.hostname.length
       || machine.password.length
       || machine.port.length) {
-				console.log('test');
+				console.log(this.id);
 			} else {
 				this.$notify.warning('Fill Empty Area');
 			}

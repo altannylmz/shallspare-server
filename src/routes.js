@@ -6,11 +6,14 @@ import NewTask from '@/views/Task/NewTask';
 import Clients from '@/views/Client/Clients';
 import EditClient from '@/views/Client/EditClient';
 
-import RemoteMachines from '@/views/RemoteMachines/RemoteMachines';
-import EditRemoteMachine from '@/views/RemoteMachines/EditRemoteMachine';
-import NewRemoteMachine from '@/views/RemoteMachines/NewRemoteMachine';
+import RemoteMachines from '@/views/RemoteMachine/RemoteMachines';
+import EditRemoteMachine from '@/views/RemoteMachine/EditRemoteMachine';
+import NewRemoteMachine from '@/views/RemoteMachine/NewRemoteMachine';
 
-import Databases from '@/views/Databases';
+import Databases from '@/views/Database/Databases';
+import EditDatabase from '@/views/Database/EditDatabase';
+import NewDatabase from '@/views/Database/NewDatabase';
+
 import Support from '@/views/Support';
 import Logs from '@/views/Logs';
 import Settings from '@/views/Settings';
@@ -22,13 +25,16 @@ export const routes = [
 	{path: '/new-task', component: NewTask, name: 'NewTask'},
 
 	{path: '/clients', component: Clients, name: 'Clients'},
-	{path: '/edit-client', component: EditClient, name: 'EditClient'},
+	{path: '/edit-client/:id', component: EditClient, name: 'EditClient'},
 
 	{path: '/remote-machines', component: RemoteMachines, name: 'RemoteMachines'},
-	{path: '/edit-remote-machine', component: EditRemoteMachine, name: 'EditRemoteMachines'},
+	{path: '/edit-remote-machine/:id', component: EditRemoteMachine, name: 'EditRemoteMachines'},
 	{path: '/new-remote-machine', component: NewRemoteMachine, name: 'NewRemoteMachines'},
 
 	{path: '/databases', component: Databases, name: 'Databases'},
+	{path: '/edit-database/:id', component: EditDatabase, name: 'EditDatabase'},
+	{path: '/new-database', component: NewDatabase, name: 'NewDatabase'},
+
 	{path: '/support', component: Support, name: 'Support'},
 	{path: '/logs', component: Logs, name: 'Logs'},
 	{path: '/settings', component: Settings, name: 'Settings'},
