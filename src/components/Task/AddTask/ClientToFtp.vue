@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="clientName===null">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Select Source Client</label>
       <select class="form-control" id="exampleFormControlSelect1">
@@ -29,11 +29,43 @@
       <input type="text" class="form-control" id="target-ftp-path">
     </div>
   </div>
+  <div v-else>
+    <div class="form-group">
+      <label for="client-name">Client Name</label>
+      <input :value="clientName" type="text" class="form-control" id="client-name" readonly >
+    </div>
+    <div class="form-group">
+      <label for="source-paths">Source Paths</label>
+      <textarea :value="sourcePaths" disabled class="form-control" id="source-paths" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="target-ftp-name">Target FTP Name</label>
+      <input :value="targetFtpName" type="text" class="form-control" id="target-ftp-name" readonly >
+    </div>
+    <div class="form-group">
+      <label for="target-ftp-path">Target FTP Path</label>
+      <input :value="targetFtpPath" type="text" class="form-control" id="target-ftp-path" readonly >
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
 	name: 'ClientToFtp',
+	props: {
+		clientName: {
+			default: null,
+		},
+		sourcePaths: {
+			default: null,
+		},
+		targetFtpName: {
+			default: null,
+		},
+		targetFtpPath: {
+			default: null,
+		},
+	},
 };
 </script>
 

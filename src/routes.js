@@ -2,6 +2,7 @@ import Dashboard from '@/views/Dashboard';
 
 import Tasks from '@/views/Task/Tasks';
 import NewTask from '@/views/Task/NewTask';
+import EditTask from '@/views/Task/EditTask';
 
 import Clients from '@/views/Client/Clients';
 import EditClient from '@/views/Client/EditClient';
@@ -26,6 +27,7 @@ export const routes = [
 
 	{path: '/tasks', component: Tasks, name: 'Tasks'},
 	{path: '/new-task', component: NewTask, name: 'NewTask'},
+	{path: '/edit-task/:id', component: EditTask, name: 'EditTask'},
 
 	{path: '/clients', component: Clients, name: 'Clients'},
 	{path: '/edit-client/:id', component: EditClient, name: 'EditClient'},

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="targetFtpName">
     <div class="form-group">
       <label for="mysql-database">Select Mysql Database</label>
       <select class="form-control" id="mysql-database">
@@ -21,11 +21,36 @@
       <input type="text" class="form-control" id="target-ftp-path">
     </div>
   </div>
+  <div v-else>
+    <div class="form-group">
+      <label for="mysql-tag">Mysql Tag</label>
+      <input :value="mysqlTag" type="text" class="form-control" id="mysql-tag" readonly>
+    </div>
+    <div class="form-group">
+      <label for="target-ftp-name">Target FTP Name</label>
+      <input :value="targetFtpName" type="text" class="form-control" id="target-ftp-name" readonly>
+    </div>
+    <div class="form-group">
+      <label for="target-ftp-path">Target FTP Path</label>
+      <input :value="targetFtpPath" type="text" class="form-control" id="target-ftp-path" readonly>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
 	name: 'MysqlDumpToFtp',
+	props: {
+		mysqlTag: {
+			default: null,
+		},
+		targetFtpName: {
+			default: null,
+		},
+		targetFtpPath: {
+			default: null,
+		},
+	},
 };
 </script>
 

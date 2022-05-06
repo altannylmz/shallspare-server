@@ -22,10 +22,10 @@
               <a><font-awesome-icon class="m-1" icon="ellipsis" /></a>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item">
+              <router-link class="dropdown-item" :to="'/edit-task/'+i" tag="a">
                 <font-awesome-icon class="my-auto mx-2" icon="pen"/>
                 <p class="d-inline text-end">Edit</p>
-              </a>
+              </router-link>
               <a @click="pauseOrStartTask(i)" class="dropdown-item">
                 <font-awesome-icon class="my-auto mx-2" icon="play"/>
                 <p class="d-inline text-end">Play</p>

@@ -50,7 +50,6 @@ export default {
 	name: 'AppSideBar',
 	computed: {
 		activeRoute() {
-			console.log(this.$route.name);
 			return this.$route.name;
 		},
 	},

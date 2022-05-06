@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div v-if="clientName === null">
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Select Source Client</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <label for="selected-client">Select Source Client</label>
+      <select class="form-control" id="selected-client">
         <option value="" disabled="" selected="">Select Source Client</option>
         <option>Altan-PC</option>
         <option>Hamza-PC</option>
@@ -21,11 +21,36 @@
       <input type="text" class="form-control" id="target-disk-path">
     </div>
   </div>
+  <div v-else>
+    <div class="form-group">
+      <label for="client-name">Client Name</label>
+      <input :value="clientName" type="text" class="form-control" id="client-name" readonly >
+    </div>
+    <div class="form-group">
+      <label for="source-paths">Source Paths</label>
+      <textarea :value="sourcePaths" disabled class="form-control" id="source-paths" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="target-disk-path">Target Disk Path</label>
+      <input :value="targetDiskPath" type="text" class="form-control" id="target-disk-path" readonly >
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
 	name: 'ClientToDisk',
+	props: {
+		clientName: {
+			default: null,
+		},
+		sourcePaths: {
+			default: null,
+		},
+		targetDiskPath: {
+			default: null,
+		},
+	},
 };
 </script>
 
