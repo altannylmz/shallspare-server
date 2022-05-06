@@ -1,0 +1,67 @@
+.logs-page{
+  table{
+    font-family: Montserrat;
+    font-weight: normal;
+    border-collapse: separate;
+    border-spacing: 0px 6px;
+    td { border: none;}
+    tr td:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+    tr td:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  .table-borderless {
+    > :not(caption) > * > * {
+      border-bottom-width: 0;
+    }
+  }
+
+  th{
+    font-size: 13px;
+    color: gray;
+  }
+  td{
+    font-size: 13px;
+  }
+
+  hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
+
+  tbody tr{
+    color: black;
+    background-color: $white;
+    .path{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 120px;
+    }
+    td{
+      text-align: center;
+    }
+  }
+
+  .pagination-btn{
+    padding: 2px 8px 2px 8px;
+    border-radius: 4px;
+    background-color: #e3e3e3;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+
+  .page-number{
+    font-size: 14px;
+    padding: 2px 8px 2px 8px;
+    border-radius: 4px;
+    background-color: #d7d7d7;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}
