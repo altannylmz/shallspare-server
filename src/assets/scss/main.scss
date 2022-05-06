@@ -12,7 +12,8 @@
 @import "layout/sidebar";
 
 // Pages
-@import "pages/clients";
+@import "pages/Client/clients";
+@import "pages/Client/edit-client";
 @import "pages/dashboard";
 @import "pages/databases";
 @import "pages/logs";
@@ -92,6 +93,25 @@ textarea:focus{
   border-color: $baseColor;
 }
 
+*:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+label{
+  font-size: 13px;
+  margin-top: 6px!important;
+  margin-bottom: 2px!important;
+}
+
 hr{
   color: #9d9d9d;
+}
+
+button[type='submit']{
+  background-color: #eeeaea;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 10px 0 10px 0;
 }

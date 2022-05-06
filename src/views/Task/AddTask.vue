@@ -1,6 +1,6 @@
 <template>
   <div class="add-task-page content position-absolute start-0 end-0 px-4">
-    <form @submit.prevent="addTask($event)" class="bg-white shadow-sm p-4">
+    <form @submit.prevent="addTask" class="bg-white shadow-sm p-4">
       <p class="text-start">
         Task>Add Task
       </p>
@@ -9,9 +9,9 @@
         <input type="text" class="form-control" id="name">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Type</label>
-        <select class="form-control" id="exampleFormControlSelect1" @change="changeTaskType($event)">
-          <option value="" disabled="" selected=""  id="tasks_choose_task_type">Görev Tipi Şeç</option>
+        <label for="task-types">Type</label>
+        <select v-model="task.type" class="form-control" id="task-types" name="taskTypes" @change="changeTaskType($event)">
+          <option value="null" disabled="" selected=""  id="tasks_choose_task_type">Görev Tipi Şeç</option>
           <option value="0" id="tasks_client_to_ftp">Client'den FTP'ye</option>
           <option value="1" id="tasks_client_to_disk">Client'den Diske</option>
           <option value="2" id="tasks_mysql_dump_to_ftp">Mysql Dump FTP'ye</option>
@@ -36,7 +36,7 @@
       </div>
       <div class="form-group">
         <label for="schedule">Timing Type</label>
-        <select class="form-control" id="schedule" @change="changeTimingType($event)">
+        <select v-model="task.schedule" class="form-control" id="schedule" @change="changeTimingType($event)">
           <option value="minute">Minute</option>
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
@@ -86,6 +86,10 @@ export default {
 		return {
 			taskType: null,
 			timingType: 'minute',
+			task: {
+				type: null,
+				schedule: 'minute',
+			},
 		};
 	},
 	methods: {
@@ -96,7 +100,12 @@ export default {
 			this.timingType = $event.target.value;
 		},
 		addTask() {
-			this.$notify.success('Task Added.');
+			// Const {elements} = $e.target;
+			if (this.task.type === null) {
+				this.$notify.warning('Fill Empty Area');
+			} else {
+				console.log('test');
+			}
 		},
 	},
 };

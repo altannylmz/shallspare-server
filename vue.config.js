@@ -28,7 +28,7 @@ module.exports = defineConfig({
 				category: 'public.app-category.utilities',
 			},
 			dmg: {
-				icon: 'src/images/mac.ico',
+				icon: 'public/mac.ico',
 				iconSize: 100,
 				window: {
 					width: 544,
