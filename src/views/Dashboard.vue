@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-page content position-absolute start-0 end-0 px-4">
+    <p class="title text-purple">Dashboard</p>
     <div class="statistic row">
       <div class="col-sm-3 text-center ">
         <div class="card shadow shadow-sm">
@@ -17,7 +18,7 @@
       </div>
       <div class="col-sm-3 text-center ">
         <div class="card shadow shadow-sm">
-          <i class="i-Cloud-Computer text-purple"></i>
+          <i class="i-Cloud-Computer "></i>
           <p>Remote Machine</p>
           <p>{{ sum.remoteMachines }}</p>
         </div>

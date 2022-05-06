@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="overflow-auto">
-        <div v-for="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" :key="i" class="task row text-center shadow-sm">
+        <div v-for="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" :key="i" class="data-row row text-center shadow-sm">
           <div class="col-sm-1 my-auto">1</div>
           <div class="col-sm-3 my-auto text-start">ALTAN-PC</div>
           <div class="col-sm-3 my-auto text-start">ALTAN</div>

@@ -1,8 +1,8 @@
 <template>
   <div class="add-task-page content position-absolute start-0 end-0 px-4">
     <form @submit.prevent="addTask" class="bg-white shadow-sm p-4">
-      <p class="text-start">
-        Task>Add Task
+      <p class="text-start title">
+        New Task
       </p>
       <div class="form-group">
         <label for="name">Name</label>
