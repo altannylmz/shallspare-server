@@ -2,13 +2,14 @@ const {ipcRenderer} = require('electron');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 
-const dbFile = path.join(ipcRenderer.sendSync('userData'), 'shallspare.db');
-// eslint-disable-next-line no-bitwise
-const db = new sqlite3.Database(dbFile, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, err => {
-	if (err) {
-		console.log(err.message);
-	}
-});
+const db = new sqlite3.Database(path.join(ipcRenderer.sendSync('userData'), 'shallspare.db'),
+	// eslint-disable-next-line no-bitwise
+	sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+	err => {
+		if (err) {
+			console.log(err.message);
+		}
+	});
 
 db.serialize(() => {
 	db.run(
