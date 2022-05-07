@@ -1,6 +1,6 @@
 'use strict';
 
-import {app, protocol, BrowserWindow, ipcMain, Tray, Menu} from 'electron';
+import {app, protocol, BrowserWindow, ipcMain, Tray, Menu, dialog} from 'electron';
 import {createProtocol} from 'vue-cli-plugin-electron-builder/lib';
 import installExtension, {VUEJS3_DEVTOOLS} from 'electron-devtools-installer';
 import path from 'path';
@@ -127,6 +127,15 @@ ipcMain.on('restartApp', () => {
 	app.exit(0);
 });
 
+ipcMain.on('showOpenDialog', (event, multiple) => {
+	dialog.showOpenDialog({
+		properties: ['openFile', 'openDirectory', multiple ? 'multiSelections' : null],
+	}).then(result => {
+		event.returnValue = result.filePaths;
+	}).catch(err => {
+		console.log(err);
+	});
+});
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
 	if (process.platform === 'win32') {

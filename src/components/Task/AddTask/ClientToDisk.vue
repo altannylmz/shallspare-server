@@ -4,21 +4,22 @@
       <label for="selected-client">Select Source Client</label>
       <select class="form-control" id="selected-client">
         <option value="" disabled="" selected="">Select Source Client</option>
-        <option>Altan-PC</option>
-        <option>Hamza-PC</option>
+        <option v-for="(client,index) in clients" :value="client.id" :key="index">{{client.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Select Source Path</label>
-      <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <select style="height: 70px;" multiple="" class="form-control" id="exampleFormControlTextarea1">
+        <option disabled v-for="(path,index) in paths" :key="index">{{path}}</option>
+      </select>
     </div>
     <div class="container-fluid p-0">
-        <button class="min-btn m-1">Add</button>
-        <button class="min-btn m-1">Remove</button>
+        <button @click="addPath" class="min-btn m-1">Add</button>
+        <button @click="deletePath" class="min-btn m-1">Remove</button>
     </div>
     <div class="form-group">
       <label for="target-disk-path">Select Target Disk Path</label>
-      <input type="text" class="form-control" id="target-disk-path">
+      <input :value="targetPath" @click="addTargetPath" readonly type="text" class="form-control" id="target-disk-path">
     </div>
   </div>
   <div v-else>
@@ -49,6 +50,31 @@ export default {
 		},
 		targetDiskPath: {
 			default: null,
+		},
+	},
+	data() {
+		return {
+			clients: [],
+			paths: [],
+			targetPath: '',
+		};
+	},
+	mounted() {
+		this.$db.all('SELECT * FROM Client', (err, clients) => {
+			if (!err) {
+				this.clients = clients;
+			}
+		});
+	},
+	methods: {
+		addPath() {
+			this.paths = this.$ipcRenderer.sendSync('showOpenDialog', true);
+		},
+		deletePath() {
+			this.paths.splice(this.paths.length - 1, 1);
+		},
+		addTargetPath() {
+			this.targetPath = this.$ipcRenderer.sendSync('showOpenDialog', false);
 		},
 	},
 };
