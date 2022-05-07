@@ -18,10 +18,12 @@ const app = createApp(App);
 import '../src/assets/scss/main.scss';
 
 import notify from './plugins/notify';
+import db from './plugins/db';
 import FontAwesomeIcon from './plugins/font-awesome';
 
 // Make BootstrapVue available throughout your project
 app.use(BootstrapVue3);
 app.use(notify);
+app.use(db);
 app.use(router);
 app.component('font-awesome-icon', FontAwesomeIcon).mount('#app');
