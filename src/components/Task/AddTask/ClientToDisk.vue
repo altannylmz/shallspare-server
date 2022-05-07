@@ -2,24 +2,24 @@
   <div v-if="clientName === null">
     <div class="form-group">
       <label for="selected-client">Select Source Client</label>
-      <select class="form-control" id="selected-client">
+      <select @change="$parent.clientToDisk.client = $event.target.value" class="form-control" id="selected-client">
         <option value="" disabled="" selected="">Select Source Client</option>
-        <option v-for="(client,index) in clients" :value="client.id" :key="index">{{client.name}}</option>
+        <option v-for="(client,index) in this.clients" :value="client.id" :key="index">{{client.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Select Source Path</label>
-      <select style="height: 70px;" multiple="" class="form-control" id="exampleFormControlTextarea1">
-        <option disabled v-for="(path,index) in paths" :key="index">{{path}}</option>
+      <select  style="height: 70px;" multiple="" class="form-control" id="exampleFormControlTextarea1">
+        <option disabled v-for="(path,index) in this.$parent.clientToDisk.paths" :key="index">{{path}}</option>
       </select>
     </div>
     <div class="container-fluid p-0">
-        <button @click="addPath" class="min-btn m-1">Add</button>
-        <button @click="deletePath" class="min-btn m-1">Remove</button>
+        <button @click.prevent="addPath" class="min-btn m-1">Add</button>
+        <button @click.prevent="deletePath" class="min-btn m-1">Remove</button>
     </div>
     <div class="form-group">
       <label for="target-disk-path">Select Target Disk Path</label>
-      <input :value="targetPath" @click="addTargetPath" readonly type="text" class="form-control" id="target-disk-path">
+      <input :value="$parent.clientToDisk.targetPath" @click.prevent="addTargetPath" readonly type="text" class="form-control" id="target-disk-path">
     </div>
   </div>
   <div v-else>
@@ -55,8 +55,6 @@ export default {
 	data() {
 		return {
 			clients: [],
-			paths: [],
-			targetPath: '',
 		};
 	},
 	mounted() {
@@ -68,13 +66,13 @@ export default {
 	},
 	methods: {
 		addPath() {
-			this.paths = this.$ipcRenderer.sendSync('showOpenDialog', true);
+			this.$parent.clientToDisk.paths = this.$ipcRenderer.sendSync('showOpenDialog', true);
 		},
 		deletePath() {
-			this.paths.splice(this.paths.length - 1, 1);
+			this.$parent.clientToDisk.paths.splice(this.$parent.clientToDisk.paths.length - 1, 1);
 		},
 		addTargetPath() {
-			this.targetPath = this.$ipcRenderer.sendSync('showOpenDialog', false);
+			this.$parent.clientToDisk.targetPath = this.$ipcRenderer.sendSync('showOpenDialog', false);
 		},
 	},
 };

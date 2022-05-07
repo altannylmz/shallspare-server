@@ -1,12 +1,12 @@
 <template>
   <div class="add-task-page content position-absolute start-0 end-0 px-4">
-    <form @submit.prevent="addTask" class="bg-white shadow-sm p-4">
+    <form @submit.prevent="addTask($event)" class="bg-white shadow-sm p-4">
       <p class="text-start title">
         New Task
       </p>
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name">
+        <input v-model="task.name" type="text" class="form-control" id="name">
       </div>
       <div class="form-group">
         <label for="task-types">Type</label>
@@ -32,21 +32,21 @@
       <ServerToFtp v-else-if="taskType===7"/>
       <div class="form-group">
         <label for="limit">Limit</label>
-        <input type="number" class="form-control" id="limit">
+        <input v-model="task.limit" type="number" class="form-control" id="limit">
       </div>
       <div class="form-group">
         <label for="schedule">Timing Type</label>
-        <select v-model="task.schedule" class="form-control" id="schedule" @change="changeTimingType($event)">
+        <select  class="form-control" id="schedule" @change="task.schedule = $event.target.value">
           <option value="minute">Minute</option>
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
           <option value="monthly">Monthly</option>
         </select>
       </div>
-      <TimingMinute v-if="timingType==='minute'"/>
-      <TimingDaily v-else-if="timingType==='daily'"/>
-      <TimingWeekly v-else-if="timingType==='weekly'"/>
-      <TimingMonthly v-else-if="timingType==='monthly'"/>
+      <TimingMinute v-if="task.schedule==='minute'"/>
+      <TimingDaily v-else-if="task.schedule==='daily'"/>
+      <TimingWeekly v-else-if="task.schedule==='weekly'"/>
+      <TimingMonthly v-else-if="task.schedule==='monthly'"/>
       <button type="submit" class="container-fluid text-center">Add</button>
     </form>
   </div>
@@ -85,10 +85,22 @@ export default {
 	data() {
 		return {
 			taskType: null,
-			timingType: 'minute',
 			task: {
-				type: null,
+				type: '',
+				name: '',
 				schedule: 'minute',
+				limit: '',
+			},
+			shecdule: {
+				minute: '',
+				hour: '',
+				dayOfWeek: '',
+				dayOfMonth: '',
+			},
+			clientToDisk: {
+				client: '',
+				paths: [],
+				targetPath: '',
 			},
 		};
 	},
@@ -96,14 +108,40 @@ export default {
 		changeTaskType($event) {
 			this.taskType = Number($event.target.value);
 		},
-		changeTimingType($event) {
-			this.timingType = $event.target.value;
-		},
 		addTask() {
-			// Const {elements} = $e.target;
-			if (this.task.type === null) {
-				this.$notify.warning('Fill Empty Area');
+			if (this.task.type === '' || this.task.name === '' || this.task.limit === ''
+          || (Number(this.task.type) === 1
+              && (this.clientToDisk.client === ''
+                  || this.clientToDisk.paths.length === 0
+                  || this.clientToDisk.targetPath === ''
+              ))
+          || (this.task.schedule === 'minute' && this.shecdule.minute === '')
+          || (this.task.schedule === 'daily' && this.shecdule.hour === '')
+          || (this.task.schedule === 'weekly' && (this.shecdule.hour === '' || this.shecdule.dayOfWeek === ''))
+          || (this.task.schedule === 'monthly' && (this.shecdule.hour === '' || this.shecdule.dayOfMonth === ''))) {
+				this.$notify.warning('Please fill empty area');
 			} else {
+				switch (Number(this.task.type)) {
+					case 0:
+						break;
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						break;
+					case 5:
+						break;
+					case 6:
+						break;
+					case 7:
+						break;
+					default:
+						this.$notify.warning('Please, select task type');
+				}
+
 				console.log('test');
 			}
 		},

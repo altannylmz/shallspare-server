@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label for="minute">Minute</label>
-    <input type="number" class="form-control" id="minute">
+    <input v-model="$parent.shecdule.minute" type="number" class="form-control" id="minute">
   </div>
 </template>
 
