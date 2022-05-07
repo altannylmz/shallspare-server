@@ -39,6 +39,8 @@
     "path": "^0.12.7",
     "randomstring": "^1.2.2",
     "selfsigned": "^2.0.1",
+    "socket.io": "^4.5.0",
+    "socket.io-stream": "^0.9.1",
     "sqlite3": "^5.0.8",
     "vue": "^3.2.33",
     "vue-chartjs": "^4.0.7",

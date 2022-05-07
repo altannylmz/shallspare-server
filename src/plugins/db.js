@@ -26,7 +26,8 @@ db.serialize(() => {
 		'CREATE TABLE IF NOT EXISTS Task_Status(id INTEGER PRIMARY KEY AUTOINCREMENT,task_id INTEGER,status INTEGER)');
 });
 
-export default {
+module.exports.db = db;
+module.exports.use = {
 	install(app) {
 		app.config.globalProperties.$db = db;
 	},

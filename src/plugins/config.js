@@ -46,7 +46,8 @@ Config.create({
 	}),
 });
 
-export default {
+module.exports.Config = Config;
+module.exports.use = {
 	install(app) {
 		app.config.globalProperties.$appConfig = Config;
 	},
