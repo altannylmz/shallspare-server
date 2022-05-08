@@ -12,6 +12,8 @@ import {faArrowDown,
 	faAngleRight,
 	faPlus,
 	faStream,
+	faFile,
+	faFolder,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faArrowDown,
@@ -27,6 +29,8 @@ library.add(faArrowDown,
 	faAngleRight,
 	faPlus,
 	faStream,
+	faFile,
+	faFolder,
 );
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';

@@ -1,6 +1,7 @@
 import {db} from '../db';
 export default (io, plugins) => {
 	io.on('connect', socket => {
+		console.log('cooon');
 		socket.on('client_key', info => {
 			if (info.key !== 'undefined') {
 				const clientIpAddress = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;

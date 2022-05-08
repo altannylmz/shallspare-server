@@ -4,7 +4,7 @@
       <label for="selected-client">Select Source Client</label>
       <select @change="$parent.clientToDisk.client = $event.target.value" class="form-control" id="selected-client">
         <option value="" disabled="" selected="">Select Source Client</option>
-        <option v-for="(client,index) in this.clients" :value="client.id" :key="index">{{client.name}}</option>
+        <option v-for="(client,index) in this.clients" :value="client.socket_id" :key="index">{{client.name}}</option>
       </select>
     </div>
     <div class="form-group">
@@ -63,10 +63,33 @@ export default {
 				this.clients = clients;
 			}
 		});
+
+		this.$io.on('connect', socket => {
+			socket.on('directory_list', info => {
+				console.log('tetikk');
+				console.log(info);
+			});
+		});
 	},
 	methods: {
 		addPath() {
-			this.$parent.clientToDisk.paths = this.$ipcRenderer.sendSync('showOpenDialog', true);
+			console.log(this.$parent.type);
+			console.log(this.$parent.clientToDisk.client);
+			if (this.$parent.type !== '') {
+				if (this.$parent.clientToDisk.client !== '') {
+					if (this.$io.sockets.sockets.get(this.$parent.clientToDisk.client) !== undefined) {
+						this.$parent.directoryModelShow = true;
+						this.$io.to(this.$parent.clientToDisk.client)
+							.emit('fetch_directory_listing', {fetch_directory: 'DISK'});
+					} else {
+						this.$notify.warning('The selected client is down.');
+					}
+				} else {
+					this.$notify.warning('Please, select client');
+				}
+			} else {
+				this.$notify.warning('Please, select task type');
+			}
 		},
 		deletePath() {
 			this.$parent.clientToDisk.paths.splice(this.$parent.clientToDisk.paths.length - 1, 1);

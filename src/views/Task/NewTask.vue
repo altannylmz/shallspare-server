@@ -49,6 +49,9 @@
       <TimingMonthly v-else-if="task.schedule==='monthly'"/>
       <button type="submit" class="container-fluid text-center">Add</button>
     </form>
+    <div class="text-center p-2 m-3">
+      <DirectoryModel/>
+    </div>
   </div>
 </template>
 
@@ -66,6 +69,8 @@ import TimingMinute from '@/components/Task/AddTask/timing/minute';
 import TimingDaily from '@/components/Task/AddTask/timing/daily';
 import TimingWeekly from '@/components/Task/AddTask/timing/weekly';
 import TimingMonthly from '@/components/Task/AddTask/timing/monthly';
+
+import DirectoryModel from '@/components/Task/AddTask/DirectoryModel';
 export default {
 	name: 'AddTask',
 	components: {
@@ -81,6 +86,7 @@ export default {
 		TimingDaily,
 		TimingWeekly,
 		TimingMonthly,
+		DirectoryModel,
 	},
 	data() {
 		return {
@@ -102,6 +108,7 @@ export default {
 				paths: [],
 				targetPath: '',
 			},
+			directoryModelShow: false,
 		};
 	},
 	methods: {
