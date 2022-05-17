@@ -12,9 +12,6 @@ import SideBar from '@/components/common/SideBar';
 export default {
 	name: 'App',
 	components: {Header, SideBar},
-	mounted() {
-		console.log(this.$store.getters.test);
-	},
 };
 </script>
 

@@ -1,5 +1,4 @@
 import {createStore} from 'vuex';
-import task from './task';
 import socket from './socket';
 const store = createStore({
 	state() {
@@ -12,8 +11,9 @@ const store = createStore({
 			state.count++;
 		},
 	},
+	actions: {},
+	getters: {},
 	modules: {
-		task,
 		socket,
 	},
 });

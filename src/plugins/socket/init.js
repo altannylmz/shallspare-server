@@ -26,5 +26,18 @@ export default {
 	install(app) {
 		app.config.globalProperties.$io = io;
 		connection(io, app.config.globalProperties);
+
+		const events = [
+			'directory_list',
+		];
+
+		io.on('connect', socket => {
+			app.config.globalProperties.$emitter.emit('connect', socket);
+			events.forEach(event => {
+				socket.on(event, info => {
+					app.config.globalProperties.$emitter.emit(event, info);
+				});
+			});
+		});
 	},
 };

@@ -58,23 +58,15 @@ export default {
 		};
 	},
 	mounted() {
-		this.$db.all('SELECT * FROM Client', (err, clients) => {
-			if (!err) {
-				this.clients = clients;
-			}
-		});
+		this.getClients();
 
-		this.$io.on('connect', socket => {
-			socket.on('directory_list', info => {
-				console.log('tetikk');
-				console.log(info);
-			});
+		this.$emitter.on('connect', () => this.getClients());
+		this.$emitter.on('directory_list', info => {
+			console.log(info);
 		});
 	},
 	methods: {
 		addPath() {
-			console.log(this.$parent.type);
-			console.log(this.$parent.clientToDisk.client);
 			if (this.$parent.type !== '') {
 				if (this.$parent.clientToDisk.client !== '') {
 					if (this.$io.sockets.sockets.get(this.$parent.clientToDisk.client) !== undefined) {
@@ -96,6 +88,13 @@ export default {
 		},
 		addTargetPath() {
 			this.$parent.clientToDisk.targetPath = this.$ipcRenderer.sendSync('showOpenDialog', false);
+		},
+		getClients() {
+			this.$db.all('SELECT * FROM Client', (err, clients) => {
+				if (!err) {
+					this.clients = clients;
+				}
+			});
 		},
 	},
 };

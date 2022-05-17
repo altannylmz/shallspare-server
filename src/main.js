@@ -14,7 +14,10 @@ import BootstrapVue3 from 'bootstrap-vue-3';
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import mitt from 'mitt';
+const emitter = mitt();
 const app = createApp(App);
+app.config.globalProperties.$emitter = emitter;
 import '../src/assets/scss/main.scss';
 
 import notify from './plugins/notify';
