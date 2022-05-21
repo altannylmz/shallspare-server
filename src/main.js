@@ -26,6 +26,7 @@ import config from './plugins/config';
 import init from './plugins/init';
 import socket from './plugins/socket/init';
 import FontAwesomeIcon from './plugins/font-awesome';
+import {HalfCircleSpinner} from 'epic-spinners';
 import store from './store/store';
 
 // Make BootstrapVue available throughout your project
@@ -37,4 +38,7 @@ app.use(db.use);
 app.use(socket);
 app.use(config.use);
 app.use(router);
-app.component('font-awesome-icon', FontAwesomeIcon).mount('#app');
+
+app.component('font-awesome-icon', FontAwesomeIcon)
+	.component('HalfCircleSpinner', HalfCircleSpinner)
+	.mount('#app');

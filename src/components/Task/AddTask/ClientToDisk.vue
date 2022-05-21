@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Select Source Path</label>
-      <select  style="height: 70px;" multiple="" class="form-control" id="exampleFormControlTextarea1">
+      <select  style="height: 70px;" multiple="" class="form-control overflow-auto" id="exampleFormControlTextarea1">
         <option disabled v-for="(path,index) in this.$parent.clientToDisk.paths" :key="index">{{path}}</option>
       </select>
     </div>
