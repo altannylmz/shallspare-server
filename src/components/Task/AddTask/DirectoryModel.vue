@@ -20,7 +20,7 @@
     </div>
     <div class="text-end">
       <button @click="cancel">CANCEL</button>
-      <button @click="ok">OK</button>
+      <button @click="add">ADD</button>
     </div>
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
 		keepGoing(path, type) {
 			if (type !== 'file') {
 				this.path += (path + '/');
-				this.$io.to(this.$parent.clientToDisk.client).emit('fetch_directory_listing', {fetch_directory: this.path});
+				this.$io.to(this.$parent.clientToDisk.socketId).emit('fetch_directory_listing', {fetch_directory: this.path});
 				this.changeSelectedPath(this.path);
 				this.$parent.activePaths = null;
 			}
@@ -48,21 +48,20 @@ export default {
 		returnTopDir(path) {
 			if (this.$parent.activePaths.platform === 'win32') {
 				const isTop = path.split('/').length === 2;
-				console.log(isTop + ' ' + path.split('/').length);
 				if (isTop) {
 					this.$parent.activePaths = null;
 					this.path = '';
 					this.selectedPath = null;
-					this.$io.to(this.$parent.clientToDisk.client)
+					this.$io.to(this.$parent.clientToDisk.socketId)
 						.emit('fetch_directory_listing', {fetch_directory: 'DISK'});
 				} else {
 					this.$parent.activePaths = null;
 					this.path = this.findTopDir();
 					this.selectedPath = this.path;
-					this.$io.to(this.$parent.clientToDisk.client).emit('fetch_directory_listing', {fetch_directory: this.path});
+					this.$io.to(this.$parent.clientToDisk.socketId).emit('fetch_directory_listing', {fetch_directory: this.path});
 				}
 			} else {
-				this.$io.to(this.$parent.clientToDisk.client).emit('fetch_directory_listing', {fetch_directory: path});
+				this.$io.to(this.$parent.clientToDisk.socketId).emit('fetch_directory_listing', {fetch_directory: path});
 			}
 		},
 		findTopDir() {
@@ -80,14 +79,14 @@ export default {
 			}
 
 			for (let i = 0; i < this.$parent.activePaths.folderList.length; ++i) {
-				console.log('dön');
 				document.getElementById('path' + i).style.backgroundColor = 'transparent';
 			}
 
 			document.getElementById('path' + index).style.backgroundColor = '#ececec';
 		},
-		ok() {
+		add() {
 			this.$parent.clientToDisk.paths.push(this.selectedPath);
+			this.$parent.directoryModelShow = false;
 		},
 		cancel() {
 			this.$parent.directoryModelShow = false;

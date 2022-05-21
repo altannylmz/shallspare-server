@@ -7,7 +7,6 @@ export default (io, plugins) => {
 				db.serialize(() => {
 					db.get('SELECT COUNT(*) as count FROM Client WHERE Client.key=?', [info.key], (err, row) => {
 						if (row.count === 0) { // No register of the client
-							console.log('aaa');
 							db.run(
 								'INSERT INTO Client (name,ip,key,socket_id) values (?,?,?,?)',
 								[

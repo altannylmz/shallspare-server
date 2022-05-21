@@ -104,7 +104,8 @@ export default {
 				dayOfMonth: '',
 			},
 			clientToDisk: {
-				client: '',
+				socketId: '',
+				clientId: '',
 				paths: [],
 				targetPath: '',
 			},
@@ -119,7 +120,7 @@ export default {
 		addTask() {
 			if (this.task.type === '' || this.task.name === '' || this.task.limit === ''
           || (Number(this.task.type) === 1
-              && (this.clientToDisk.client === ''
+              && (this.clientToDisk.clientId === ''
                   || this.clientToDisk.paths.length === 0
                   || this.clientToDisk.targetPath === ''
               ))
@@ -133,6 +134,22 @@ export default {
 					case 0:
 						break;
 					case 1:
+						try {
+							console.log(this.timeToString());
+							this.$db.run('INSERT INTO Task(name,type,source_id,source_path,target_id,target_path,time,islimit,running,stop) VALUES (?,?,?,?,?,?,?,?,0,0)', [
+								this.task.name,
+								this.task.type,
+								this.clientToDisk.clientId,
+								this.pathsToString(this.clientToDisk.paths),
+								null,
+								this.clientToDisk.targetPath,
+								this.timeToString(),
+								this.task.limit,
+							]);
+						} catch (e) {
+							console.log(e);
+						}
+
 						break;
 					case 2:
 						break;
@@ -151,6 +168,27 @@ export default {
 				}
 
 				console.log('test');
+			}
+		},
+		pathsToString(paths) {
+			return paths.join('|');
+		},
+		timeToString() {
+			let parseClock;
+			switch (this.task.schedule) {
+				case 'minute': // T
+					return `T/${this.shecdule.minute}`;
+				case 'daily': // W
+					parseClock = this.shecdule.hour.split(':');
+					return `D/${parseClock[0]}/${parseClock[1]}`;
+				case 'weekly': // D
+					parseClock = this.shecdule.hour.split(':');
+					return `W/${(this.shecdule.dayOfWeek + 1).toString()}/${parseClock[0]}/${parseClock[1]}`;
+				case 'monthly': // M
+					parseClock = this.shecdule.hour.split(':');
+					return `M/${this.shecdule.dayOfMonth}/${parseClock[0]}/${parseClock[1]}`;
+				default:
+					break;
 			}
 		},
 	},

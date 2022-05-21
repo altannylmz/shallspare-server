@@ -2,9 +2,9 @@
   <div v-if="clientName === null">
     <div class="form-group">
       <label for="selected-client">Select Source Client</label>
-      <select @change="$parent.clientToDisk.client = $event.target.value" class="form-control" id="selected-client">
+      <select @change="changeClient($event.target.value)" class="form-control" id="selected-client">
         <option value="" disabled="" selected="">Select Source Client</option>
-        <option v-for="(client,index) in this.clients" :value="client.socket_id" :key="index">{{client.name}}</option>
+        <option v-for="(client,index) in clients" :value="index" :key="index">{{client.name}}</option>
       </select>
     </div>
     <div class="form-group">
@@ -67,12 +67,16 @@ export default {
 		});
 	},
 	methods: {
+		changeClient(value) {
+			this.$parent.clientToDisk.socketId = this.clients[value].socket_id;
+			this.$parent.clientToDisk.clientId = this.clients[value].id;
+		},
 		addPath() {
 			if (this.$parent.type !== '') {
-				if (this.$parent.clientToDisk.client !== '') {
-					if (this.$io.sockets.sockets.get(this.$parent.clientToDisk.client) !== undefined) {
+				if (this.$parent.clientToDisk.socketId !== '') {
+					if (this.$io.sockets.sockets.get(this.$parent.clientToDisk.socketId) !== undefined) {
 						this.$parent.directoryModelShow = true;
-						this.$io.to(this.$parent.clientToDisk.client)
+						this.$io.to(this.$parent.clientToDisk.socketId)
 							.emit('fetch_directory_listing', {fetch_directory: 'DISK'});
 					} else {
 						this.$notify.warning('The selected client is down.');
