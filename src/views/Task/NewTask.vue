@@ -109,6 +109,7 @@ export default {
 				targetPath: '',
 			},
 			directoryModelShow: false,
+			activePaths: null,
 		};
 	},
 	methods: {

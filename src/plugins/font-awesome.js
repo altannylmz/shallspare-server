@@ -14,6 +14,7 @@ import {faArrowDown,
 	faStream,
 	faFile,
 	faFolder,
+	faFloppyDisk,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faArrowDown,
@@ -31,6 +32,7 @@ library.add(faArrowDown,
 	faStream,
 	faFile,
 	faFolder,
+	faFloppyDisk,
 );
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';

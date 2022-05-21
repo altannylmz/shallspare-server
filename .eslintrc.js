@@ -16,6 +16,7 @@ module.exports = {
 	],
 	rules: {
 		'no-negated-condition': 0,
+		'vue/no-mutating-props': 0,
 		camelcase: 'off',
 	},
 };

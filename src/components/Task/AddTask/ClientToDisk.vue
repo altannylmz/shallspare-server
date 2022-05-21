@@ -61,8 +61,9 @@ export default {
 		this.getClients();
 
 		this.$emitter.on('connect', () => this.getClients());
-		this.$emitter.on('directory_list', info => {
-			console.log(info);
+		this.$emitter.on('directory_list', content => {
+			console.log(content);
+			this.$parent.activePaths = content;
 		});
 	},
 	methods: {
