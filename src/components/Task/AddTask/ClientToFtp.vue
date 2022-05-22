@@ -1,20 +1,21 @@
 <template>
   <div v-if="clientName===null">
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Select Source Client</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <label for="selected-client">Select Source Client</label>
+      <select @change="changeClient($event.target.value)" class="form-control" id="selected-client">
         <option value="" disabled="" selected="">Select Source Client</option>
-        <option>Altan-PC</option>
-        <option>Hamza-PC</option>
+        <option v-for="(client,index) in clients" :value="index" :key="index">{{client.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Select Source Path</label>
-      <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <select  style="height: 70px;" multiple="" class="form-control overflow-auto" id="exampleFormControlTextarea1">
+        <option disabled v-for="(path,index) in $parent.client.sourcePaths" :key="index">{{path}}</option>
+      </select>
     </div>
     <div class="container-fluid p-0">
-      <button class="min-btn m-1">Add</button>
-      <button class="min-btn m-1">Remove</button>
+      <button @click.prevent="addPath" class="min-btn m-1">Add</button>
+      <button @click.prevent="deletePath" class="min-btn m-1">Remove</button>
     </div>
     <div class="form-group">
       <label for="exampleFormControlSelect2">Select Target FTP</label>
@@ -64,6 +65,57 @@ export default {
 		},
 		targetFtpPath: {
 			default: null,
+		},
+	},
+	data() {
+		return {
+			clients: [],
+		};
+	},
+	mounted() {
+		this.getClients();
+
+		this.$emitter.on('connect', () => this.getClients());
+		this.$emitter.on('directory_list', content => {
+			console.log(content);
+			this.$parent.activePaths = content;
+		});
+	},
+	methods: {
+		changeClient(value) {
+			this.$parent.client.socketId = this.clients[value].socket_id;
+			this.$parent.client.clientId = this.clients[value].id;
+		},
+		addPath() {
+			this.$parent.whatWillDirModel = 'client';
+			if (this.$parent.type !== '') {
+				if (this.$parent.client.socketId !== '') {
+					if (this.$io.sockets.sockets.get(this.$parent.client.socketId) !== undefined) {
+						this.$parent.directoryModelShow = true;
+						this.$io.to(this.$parent.client.socketId)
+							.emit('fetch_directory_listing', {fetch_directory: 'DISK'});
+					} else {
+						this.$notify.warning('The selected client is down.');
+					}
+				} else {
+					this.$notify.warning('Please, select client');
+				}
+			} else {
+				this.$notify.warning('Please, select task type');
+			}
+		},
+		deletePath() {
+			this.$parent.client.sourcePaths.splice(this.$parent.client.sourcePaths.length - 1, 1);
+		},
+		addTargetPath() {
+			this.$parent.clientToDisk.targetPath = this.$ipcRenderer.sendSync('showOpenDialog', false);
+		},
+		getClients() {
+			this.$db.all('SELECT * FROM Client', (err, clients) => {
+				if (!err) {
+					this.clients = clients;
+				}
+			});
 		},
 	},
 };

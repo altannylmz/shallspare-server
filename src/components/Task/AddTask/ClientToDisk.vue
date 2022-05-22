@@ -10,7 +10,7 @@
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Select Source Path</label>
       <select  style="height: 70px;" multiple="" class="form-control overflow-auto" id="exampleFormControlTextarea1">
-        <option disabled v-for="(path,index) in this.$parent.clientToDisk.paths" :key="index">{{path}}</option>
+        <option disabled v-for="(path,index) in $parent.client.sourcePaths" :key="index">{{path}}</option>
       </select>
     </div>
     <div class="container-fluid p-0">
@@ -68,15 +68,16 @@ export default {
 	},
 	methods: {
 		changeClient(value) {
-			this.$parent.clientToDisk.socketId = this.clients[value].socket_id;
-			this.$parent.clientToDisk.clientId = this.clients[value].id;
+			this.$parent.client.socketId = this.clients[value].socket_id;
+			this.$parent.client.clientId = this.clients[value].id;
 		},
 		addPath() {
+			this.$parent.whatWillDirModel = 'client';
 			if (this.$parent.type !== '') {
-				if (this.$parent.clientToDisk.socketId !== '') {
-					if (this.$io.sockets.sockets.get(this.$parent.clientToDisk.socketId) !== undefined) {
+				if (this.$parent.client.socketId !== '') {
+					if (this.$io.sockets.sockets.get(this.$parent.client.socketId) !== undefined) {
 						this.$parent.directoryModelShow = true;
-						this.$io.to(this.$parent.clientToDisk.socketId)
+						this.$io.to(this.$parent.client.socketId)
 							.emit('fetch_directory_listing', {fetch_directory: 'DISK'});
 					} else {
 						this.$notify.warning('The selected client is down.');
@@ -89,7 +90,7 @@ export default {
 			}
 		},
 		deletePath() {
-			this.$parent.clientToDisk.paths.splice(this.$parent.clientToDisk.paths.length - 1, 1);
+			this.$parent.client.sourcePaths.splice(this.$parent.client.sourcePaths.length - 1, 1);
 		},
 		addTargetPath() {
 			this.$parent.clientToDisk.targetPath = this.$ipcRenderer.sendSync('showOpenDialog', false);

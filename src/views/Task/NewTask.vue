@@ -103,13 +103,19 @@ export default {
 				dayOfWeek: '',
 				dayOfMonth: '',
 			},
+			clientToFtp: {
+				targetPath: '',
+			},
 			clientToDisk: {
-				socketId: '',
-				clientId: '',
-				paths: [],
 				targetPath: '',
 			},
 			directoryModelShow: false,
+			whatWillDirModel: null,
+			client: {
+				socketId: '',
+				clientId: '',
+				sourcePaths: [],
+			},
 			activePaths: null,
 		};
 	},
